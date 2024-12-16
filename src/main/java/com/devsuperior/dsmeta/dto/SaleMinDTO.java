@@ -1,36 +1,33 @@
 package com.devsuperior.dsmeta.dto;
 
-import java.time.LocalDate;
 
-import com.devsuperior.dsmeta.entities.Sale;
+import com.devsuperior.dsmeta.projections.SumaryProjection;
 
 public class SaleMinDTO {
 
-	private Long id;
-	private Double amount;
-	private LocalDate date;
-	
-	public SaleMinDTO(Long id, Double amount, LocalDate date) {
-		this.id = id;
-		this.amount = amount;
-		this.date = date;
-	}
-	
-	public SaleMinDTO(Sale entity) {
-		id = entity.getId();
-		amount = entity.getAmount();
-		date = entity.getDate();
-	}
+    private String name;
+    private Double totalAmount;
 
-	public Long getId() {
-		return id;
-	}
+		
 
-	public Double getAmount() {
-		return amount;
-	}
+    public SaleMinDTO(SumaryProjection projection) {
+        name = projection.getName();
+        totalAmount = Double.parseDouble(projection.getAmount());
+    }
+    
+    public String getName() {
+        return name;
+    }
 
-	public LocalDate getDate() {
-		return date;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(Double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
 }
